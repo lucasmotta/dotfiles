@@ -22,6 +22,7 @@ brew install git
 brew install node
 brew install ruby
 brew install yarn
+brew install tree
 
 # install apps
 brew install 1password
