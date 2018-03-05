@@ -1,7 +1,5 @@
 /**
  * Phoenix config
- * https://github.com/kasper/phoenix/
- *
  * ctrl+alt+left = split screen left
  * ctrl+alt+right = split screen right
  * ctrl+alt+up = split screen top
@@ -11,6 +9,7 @@
  */
 const PADDING = 5
 const META = ['ctrl', 'alt', 'cmd']
+
 
 /**
  * Resize boilerplate
@@ -24,13 +23,10 @@ const getWindow = cb => {
   }
 }
 
-const resize = (key, cb) =>
-  bind(key, () =>
-    getWindow(window => {
-      var screenFrame = Screen.main().flippedVisibleFrame()
-      window.setFrame(cb(screenFrame))
-    })
-  )
+const resize = (key, cb) => bind(key, () => getWindow(window => {
+  var screenFrame = Screen.main().flippedVisibleFrame()
+  window.setFrame(cb(screenFrame))
+}))
 
 /**
  * Split Left
@@ -75,12 +71,16 @@ const bottomHandler = resize('down', frame => ({
 /**
  * Split Center
  */
-const centerHandler = resize('return', frame => ({
-  x: frame.width * 0.25,
-  y: frame.height * 0.25,
-  width: frame.width * 0.5,
-  height: frame.height * 0.5,
-}))
+const centerHandler = resize('return', frame => {
+  const width = Math.max(1100, frame.width * 0.5);
+  const height = Math.max(600, frame.height * 0.5);
+  return {
+    width,
+    height,
+    x: frame.width * 0.5 - width * 0.5,
+    y: frame.height * 0.5 - height * 0.5 + frame.y,
+  }
+})
 
 /**
  * Full Screen
