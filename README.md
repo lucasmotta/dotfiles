@@ -13,6 +13,9 @@ cd dotfiles
 - Configure it using secret gist config
 - Run `Sync Settings: Restore`
 
+### App Store
+- [Amphetamine](https://itunes.apple.com/app/amphetamine/id937984704?mt=12)
+
 ## Credits
 
 ### MacOS
