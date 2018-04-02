@@ -32,6 +32,7 @@ brew cask install firefox
 brew cask install google-chrome
 brew cask install harvest
 brew cask install iterm2
+brew cask install kap
 brew cask install opera
 brew cask install phoenix
 brew cask install sketch
