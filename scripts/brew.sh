@@ -25,19 +25,19 @@ brew install yarn
 brew install tree
 
 # install apps
-brew install 1password
-brew install appcleaner
-brew install atom
-brew install firefox
-brew install google-chrome
-brew install harvest
-brew install iterm2
-brew install opera
-brew install phoenix
-brew install sketch
-brew install slack
-brew install spotify
-brew install vlc
+brew cask install 1password
+brew cask install appcleaner
+brew cask install atom
+brew cask install firefox
+brew cask install google-chrome
+brew cask install harvest
+brew cask install iterm2
+brew cask install opera
+brew cask install phoenix
+brew cask install sketch
+brew cask install slack
+brew cask install spotify
+brew cask install vlc
 
 # quick look plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
