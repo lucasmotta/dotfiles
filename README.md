@@ -15,6 +15,7 @@ cd dotfiles
 
 ### App Store
 - [Amphetamine](https://itunes.apple.com/app/amphetamine/id937984704?mt=12)
+- [Newton](https://itunes.apple.com/app/newton-supercharged-emailing/id1059655371?mt=12)
 
 ## Credits
 
