@@ -13,14 +13,6 @@ source "$(pwd)/scripts/brew.sh"
 source "$(pwd)/scripts/fish.sh"
 
 ############################################
-# MacOS prefs
-############################################
-if echo "$answerMacOS" | grep -iq "^y" ;then
-  title "M A C   O S   P R E F S"
-  source "$(pwd)/scripts/macos.sh"
-fi
-
-############################################
 # Assets
 ############################################
 open $(pwd)/assets/DuotoneDark.itermcolors
@@ -37,3 +29,11 @@ ln -fs "$(pwd)/.hushlogin" ~/.hushlogin
 ln -fs "$(pwd)/.phoenix.js" ~/.phoenix.js
 ln -fs "$(pwd)/.vimrc" ~/.vimrc
 ln -fs "$(pwd)/config.fish" ~/.config/fish/config.fish
+
+############################################
+# MacOS prefs
+############################################
+if echo "$answerMacOS" | grep -iq "^y" ;then
+  title "M A C   O S   P R E F S"
+  source "$(pwd)/scripts/macos.sh"
+fi
