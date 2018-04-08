@@ -18,5 +18,5 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fishe
 
 # install fisherman plugins
 fisher fnm
-fisher bass
-fisher pure
+fisher edc/bass
+fisher rafaelrinaldi/pure
