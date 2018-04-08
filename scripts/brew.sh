@@ -23,6 +23,7 @@ brew install node
 brew install ruby
 brew install yarn
 brew install tree
+brew install watchman
 
 # install apps
 brew cask install 1password
