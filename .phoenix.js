@@ -24,7 +24,7 @@ const getWindow = cb => {
 }
 
 const resize = (key, cb) => bind(key, () => getWindow(window => {
-  var screenFrame = Screen.main().flippedVisibleFrame()
+  var screenFrame = window.screen().flippedVisibleFrame()
   window.setFrame(cb(screenFrame, window))
 }))
 
@@ -86,9 +86,12 @@ const centerHandler = resize('return', frame => {
  * Align Center
  */
 const alignCenterHandler = resize('c', (frame, window) => {
+  const { width, height } = window.size()
   return {
-    x: frame.width * 0.5 - window.size().width * 0.5,
-    y: frame.height * 0.5 - window.size().height * 0.5,
+    width,
+    height,
+    x: frame.width * 0.5 - width * 0.5,
+    y: frame.height * 0.5 - height * 0.5 + frame.y,
   }
 })
 
