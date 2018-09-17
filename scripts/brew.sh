@@ -36,6 +36,7 @@ brew cask install iterm2
 brew cask install kap
 brew cask install opera
 brew cask install phoenix
+brew cask install react-native-debugger
 brew cask install sketch
 brew cask install slack
 brew cask install spotify
