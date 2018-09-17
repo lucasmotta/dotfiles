@@ -10,7 +10,6 @@
 const PADDING = 5
 const META = ['ctrl', 'alt', 'cmd']
 
-
 /**
  * Resize boilerplate
  */
@@ -23,10 +22,13 @@ const getWindow = cb => {
   }
 }
 
-const resize = (key, cb) => bind(key, () => getWindow(window => {
-  var screenFrame = window.screen().flippedVisibleFrame()
-  window.setFrame(cb(screenFrame, window))
-}))
+const resize = (key, cb) =>
+  bind(key, () =>
+    getWindow(window => {
+      var screenFrame = window.screen().flippedVisibleFrame()
+      window.setFrame(cb(screenFrame, window))
+    })
+  )
 
 /**
  * Split Left
@@ -72,8 +74,8 @@ const bottomHandler = resize('down', frame => ({
  * Split Center
  */
 const centerHandler = resize('return', frame => {
-  const width = Math.max(1100, frame.width * 0.5);
-  const height = Math.max(600, frame.height * 0.5);
+  const width = Math.max(1100, frame.width * 0.5)
+  const height = Math.max(600, frame.height * 0.5)
   return {
     width,
     height,
@@ -104,3 +106,57 @@ const fullHandler = resize('space', frame => ({
   width: frame.width - PADDING * 2,
   height: frame.height - PADDING * 2,
 }))
+
+/**
+ * Dev Mode
+ *
+ * - check if there's the Simulator app running
+ * - moves the Simulator to the top right
+ * - moves the VSCode to the left and fill the remaining available space (with Simulator or not)
+ * - moves the React Native Debugger to the same position as VSCode
+ */
+const devHandler = bind('d', () =>
+  getWindow(window => {
+    const simulator = App.get('Simulator')
+    const code = App.get('Code')
+    const reactDebugger = App.get('React Native Debugger')
+    const frame = window.screen().flippedVisibleFrame()
+    let simulatorSize
+    let simulatorWidth = 0
+
+    if (simulator) {
+      simulatorSize = simulator.mainWindow().size()
+      simulatorWidth = simulatorSize.width ? simulatorSize.width + PADDING : 0
+    }
+
+    const devFrame = {
+      x: PADDING,
+      y: PADDING + frame.y,
+      width: frame.width - simulatorWidth - PADDING * 2,
+      height: frame.height - PADDING * 2,
+    }
+
+    // Resize ALL VSCode windows
+    if (code) {
+      code.focus()
+      code.windows().map(window => {
+        window.setFrame(devFrame)
+      })
+    }
+
+    // Resize the main React Native Debugger window
+    if (reactDebugger) {
+      reactDebugger.mainWindow().setFrame(devFrame)
+    }
+
+    // Resize the main Simulator window
+    if (simulator) {
+      simulator.mainWindow().setFrame({
+        x: frame.width - simulatorSize.width - PADDING,
+        y: PADDING + frame.y,
+        width: simulatorSize.width,
+        height: simulatorSize.height,
+      })
+    }
+  })
+)
