@@ -1,4 +1,5 @@
 set -g -x PATH /usr/local/bin $PATH
+set -x PATH $HOME/.fastlane/bin $PATH
 
 set -g -x fish_greeting ''
 
@@ -8,3 +9,5 @@ set pure_symbol_prompt "↳ "
 set pure_color_gray (set_color white)
 
 set -Ux EDITOR vim
+
+alias g="git"
