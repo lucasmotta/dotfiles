@@ -1,7 +1,7 @@
 # dotfiles
 
 ```bash
-git clone https://github.com/lucasmotta/dotfiles.git
+git clone git@github.com:lucasmotta/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
