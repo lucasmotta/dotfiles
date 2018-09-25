@@ -17,6 +17,7 @@ brew update
 brew upgrade
 
 # install basics stuff
+brew install ccat
 brew install fish
 brew install git
 brew install node
@@ -41,6 +42,7 @@ brew cask install sketch
 brew cask install slack
 brew cask install spotify
 brew cask install vlc
+brew cask install zeplin
 
 # quick look plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
