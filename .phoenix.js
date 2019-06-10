@@ -25,7 +25,7 @@ const getWindow = cb => {
 const resize = (key, cb) =>
   bind(key, () =>
     getWindow(window => {
-      var screenFrame = window.screen().flippedVisibleFrame()
+      var screenFrame = Screen.main().flippedVisibleFrame()
       window.setFrame(cb(screenFrame, window))
     })
   )
@@ -34,9 +34,9 @@ const resize = (key, cb) =>
  * Split Left
  */
 const leftHandler = resize('left', frame => ({
-  x: PADDING,
-  y: PADDING + frame.y,
-  width: (frame.width - PADDING) / 2 - PADDING,
+  x: frame.x + PADDING,
+  y: frame.y + PADDING,
+  width: frame.width / 2 - PADDING * 1.5,
   height: frame.height - PADDING * 2,
 }))
 
@@ -44,9 +44,9 @@ const leftHandler = resize('left', frame => ({
  * Split Right
  */
 const rightHandler = resize('right', frame => ({
-  x: (frame.width + PADDING) / 2,
-  y: PADDING + frame.y,
-  width: (frame.width - PADDING) / 2 - PADDING * 1.5,
+  x: frame.x + frame.width / 2 + PADDING * 0.5,
+  y: frame.y + PADDING,
+  width: frame.width / 2 - PADDING * 1.5,
   height: frame.height - PADDING * 2,
 }))
 
@@ -54,20 +54,20 @@ const rightHandler = resize('right', frame => ({
  * Split Top
  */
 const topHandler = resize('up', frame => ({
-  x: PADDING,
-  y: PADDING + frame.y,
+  x: frame.x + PADDING,
+  y: frame.y + PADDING,
   width: frame.width - PADDING * 2,
-  height: Math.ceil((frame.height - frame.y) / 2 + PADDING * 0.5),
+  height: Math.ceil(frame.height / 2 - PADDING * 1.5),
 }))
 
 /**
  * Split Bototm
  */
 const bottomHandler = resize('down', frame => ({
-  x: PADDING,
-  y: (frame.height + PADDING) / 2 + frame.y,
+  x: frame.x + PADDING,
+  y: frame.y + frame.height / 2 + PADDING * 0.5,
   width: frame.width - PADDING * 2,
-  height: Math.ceil((frame.height - frame.y) / 2 + PADDING * 0.5),
+  height: Math.ceil(frame.height / 2 - PADDING * 1.5),
 }))
 
 /**
@@ -79,8 +79,8 @@ const centerHandler = resize('return', frame => {
   return {
     width,
     height,
-    x: frame.width * 0.5 - width * 0.5,
-    y: frame.height * 0.5 - height * 0.5 + frame.y,
+    x: frame.x + frame.width * 0.5 - width * 0.5,
+    y: frame.y + frame.height * 0.5 - height * 0.5,
   }
 })
 
@@ -92,8 +92,8 @@ const alignCenterHandler = resize('c', (frame, window) => {
   return {
     width,
     height,
-    x: frame.width * 0.5 - width * 0.5,
-    y: frame.height * 0.5 - height * 0.5 + frame.y,
+    x: frame.x + frame.width * 0.5 - width * 0.5,
+    y: frame.y + frame.height * 0.5 - height * 0.5,
   }
 })
 
@@ -101,8 +101,8 @@ const alignCenterHandler = resize('c', (frame, window) => {
  * Full Screen
  */
 const fullHandler = resize('space', frame => ({
-  x: PADDING,
-  y: PADDING + frame.y,
+  x: frame.x + PADDING,
+  y: frame.y + PADDING,
   width: frame.width - PADDING * 2,
   height: frame.height - PADDING * 2,
 }))
@@ -117,9 +117,12 @@ const fullHandler = resize('space', frame => ({
  */
 const devHandler = bind('d', () =>
   getWindow(window => {
-    const simulator = App.get('Simulator')
+    const simulator = App.all().find(
+      app => app.bundleIdentifier() === 'com.apple.iphonesimulator'
+    )
     const code = App.get('Code')
     const reactDebugger = App.get('React Native Debugger')
+    const reactotron = App.get('Reactotron')
     const frame = window.screen().flippedVisibleFrame()
     let simulatorSize
     let simulatorWidth = 0
@@ -129,31 +132,47 @@ const devHandler = bind('d', () =>
       simulatorWidth = simulatorSize.width ? simulatorSize.width + PADDING : 0
     }
 
-    const devFrame = {
-      x: PADDING,
-      y: PADDING + frame.y,
-      width: frame.width - simulatorWidth - PADDING * 2,
+    const codeFrame = {
+      x: frame.x + PADDING,
+      y: frame.y + PADDING,
+      width: frame.width / 2 - PADDING * 1.5,
+      height: frame.height - PADDING * 2,
+    }
+
+    const debugFrame = {
+      x: frame.x + frame.width / 2 + PADDING * 0.5 + simulatorWidth,
+      y: frame.y + PADDING,
+      width: frame.width / 2 - PADDING * 1.5 - simulatorWidth,
       height: frame.height - PADDING * 2,
     }
 
     // Resize ALL VSCode windows
     if (code) {
-      code.focus()
+      // code.focus()
       code.windows().map(window => {
-        window.setFrame(devFrame)
+        window.setFrame(codeFrame)
       })
     }
 
     // Resize the main React Native Debugger window
     if (reactDebugger) {
-      reactDebugger.mainWindow().setFrame(devFrame)
+      reactDebugger.windows().map(window => {
+        window.setFrame(debugFrame)
+      })
+    }
+
+    // Resize the main React Native Debugger window
+    if (reactotron) {
+      reactotron.windows().map(window => {
+        window.setFrame(debugFrame)
+      })
     }
 
     // Resize the main Simulator window
     if (simulator) {
       simulator.mainWindow().setFrame({
-        x: frame.width - simulatorSize.width - PADDING,
-        y: PADDING + frame.y,
+        x: frame.x + frame.width / 2 + PADDING * 0.5,
+        y: frame.y + PADDING,
         width: simulatorSize.width,
         height: simulatorSize.height,
       })
