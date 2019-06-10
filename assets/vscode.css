@@ -2,3 +2,7 @@
     font-family: Iosevka, "Operator Mono";
     font-size: 13px;
 }
+
+.mac {
+    font-family: Iosevka, "Operator Mono" !important;
+}
