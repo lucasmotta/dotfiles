@@ -17,6 +17,9 @@ chsh -s /usr/local/bin/fish
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 # install fisherman plugins
-fisher fnm
 fisher edc/bass
 fisher rafaelrinaldi/pure
+fisher jorgebucaran/fish-nvm
+
+# install node through fish-nvm
+nvm use latest
