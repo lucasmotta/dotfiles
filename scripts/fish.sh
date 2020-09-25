@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ############################################
-title "F i s h   S h e l l"
+title "Fish Shell"
 ############################################
 
 # add fish to the list of acceptable shells (if not already present)

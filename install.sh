@@ -13,11 +13,6 @@ source "$(pwd)/scripts/brew.sh"
 source "$(pwd)/scripts/fish.sh"
 
 ############################################
-# Assets
-############################################
-open $(pwd)/assets/DuotoneDark.itermcolors
-
-############################################
 # Symlink
 ############################################
 mkdir -p ~/.config/fish
@@ -35,6 +30,6 @@ ln -fs "$(pwd)/config.fish" ~/.config/fish/config.fish
 # MacOS prefs
 ############################################
 if echo "$answerMacOS" | grep -iq "^y" ;then
-  title "M A C   O S   P R E F S"
+  title "macOs preferences"
   source "$(pwd)/scripts/macos.sh"
 fi

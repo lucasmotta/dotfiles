@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 ############################################
-title "H o m e b r e w"
+title "Homebrew"
 ############################################
 
 
 # install homebrew
 if ! which brew > /dev/null; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # make sure we’re using the latest homebrew
@@ -19,6 +19,7 @@ brew upgrade
 # install basics stuff
 brew install ccat
 brew install fish
+brew install gh
 brew install git
 brew install ruby
 brew install yarn

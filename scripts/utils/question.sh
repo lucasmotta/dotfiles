@@ -1,8 +1,8 @@
 question()
 {
-  question="\x1b[39;1m$1\x1b[0m"
-  symbol="\x1b[2m[\x1b[0m\x1b[33m?\x1b[0m\x1b[2m]\x1b[0m"
-  yesNo="\x1b[2m(y/\x1b[0m\x1b[97mN\x1b[0m\x1b[2m)\x1b[0m"
+  question="$1"
+  symbol="[?]"
+  yesNo="(y/N)"
 
-  echo "$symbol $question ${yesNo}"
+  echo "🤔 $1 (y/N)"
 }
