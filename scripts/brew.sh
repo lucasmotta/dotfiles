@@ -22,7 +22,6 @@ brew install fish
 brew install gh
 brew install git
 brew install ruby
-brew install yarn
 brew install tree
 brew install watchman
 
