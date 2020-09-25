@@ -1,5 +1,5 @@
 module.exports = {
-  defaultBrowser: 'Brave Browser',
+  defaultBrowser: 'Safari',
   handlers: [
     {
       match: finicky.matchHostnames([
