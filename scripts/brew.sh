@@ -21,6 +21,7 @@ brew install ccat
 brew install fish
 brew install gh
 brew install git
+brew install mas
 brew install ruby
 brew install tree
 brew install watchman
@@ -51,8 +52,13 @@ brew cask install whatsapp
 brew cask install zeplin
 brew cask install zoomus
 
-# quick look plugins (https://github.com/sindresorhus/quick-look-plugins)
-# brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
+# install appstore apps
+mas 937984704       # Amphetamine
+mas 1287239339      # ColorSlurp
+
+# install fonts
+brew tap homebrew/cask-fonts
+brew cask install font-iosevka
 
 # remove outdated versions from the cellar
 brew cleanup
