@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+############################################
+title "Homebrew"
+############################################
+
+
+# install homebrew
+if ! which brew > /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+# make sure we’re using the latest homebrew
+brew update
+
+# upgrade any already-installed formulae
+brew upgrade
+
+# install basics stuff
+brew install ccat
+brew install fish
+brew install gh
+brew install git
+brew install mas
+brew install ruby
+brew install tree
+brew install watchman
+
+# install apps
+brew cask install 1password
+brew cask install android-studio
+brew cask install appcleaner
+brew cask install brave-browser
+brew cask install finicky
+brew cask install firefox
+brew cask install flipper
+brew cask install google-chrome
+brew cask install imageoptim
+brew cask install iterm2
+brew cask install kap
+brew cask install maccy
+brew cask install opera
+brew cask install phoenix
+brew cask install reactotron
+brew cask install sketch
+brew cask install slack
+brew cask install spotify
+brew cask install transmission
+brew cask install visual-studio-code
+brew cask install vlc
+brew cask install whatsapp
+brew cask install zeplin
+brew cask install zoomus
+
+# install appstore apps
+mas 937984704       # Amphetamine
+mas 1287239339      # ColorSlurp
+
+# install fonts
+brew tap homebrew/cask-fonts
+brew cask install font-iosevka
+
+# remove outdated versions from the cellar
+brew cleanup
