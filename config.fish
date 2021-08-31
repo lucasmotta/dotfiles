@@ -26,5 +26,8 @@ status --is-interactive
 
 # Twitch alias
 function twitch
-  streamlink "twitch.tv/$argv" best --player /usr/bin/open --player-args "-W -n -a 'Quicktime Player' {filename}" --player-passthrough hls
+  streamlink "twitch.tv/$argv" best --player /usr/bin/open --player-args "-W -n -a 'Quicktime Player' {filename}" --player-passthrough hls --twitch-disable-ads
+end
+function youtube
+  streamlink "$argv" best --player /usr/bin/open --player-args "-W -n -a 'Quicktime Player' {filename}" --player-passthrough hls
 end

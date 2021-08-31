@@ -23,6 +23,7 @@ brew install gh
 brew install git
 brew install mas
 brew install ruby
+brew install streamlink
 brew install tree
 brew install watchman
 
@@ -50,7 +51,7 @@ brew install --cask visual-studio-code
 brew install --cask vlc
 brew install --cask whatsapp
 brew install --cask zeplin
-brew install --cask zoomus
+brew install --cask zoom
 
 # install appstore apps
 mas 937984704       # Amphetamine
