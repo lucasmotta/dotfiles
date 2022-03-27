@@ -54,8 +54,8 @@ brew install --cask zeplin
 brew install --cask zoom
 
 # install appstore apps
-mas 937984704       # Amphetamine
-mas 1287239339      # ColorSlurp
+mas install 937984704       # Amphetamine
+mas install 1287239339      # ColorSlurp
 
 # install fonts
 brew tap homebrew/cask-fonts
