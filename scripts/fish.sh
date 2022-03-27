@@ -18,5 +18,4 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 # install fisherman plugins
 fisher install pure-fish/pure
-fisher install jorgebucaran/nvm.fish
 
