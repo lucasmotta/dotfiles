@@ -11,6 +11,13 @@ set -g -x JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Content
 # Fastlane
 set -g -x PATH $HOME/.fastlane/bin $PATH
 
+# Postgres
+set -gx NO_VENDORED_POSTGRES true
+
+# Volta
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 # Ruby
 set fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
