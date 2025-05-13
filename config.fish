@@ -1,40 +1,85 @@
+# ===============================
+# PATH MANAGEMENT
+# ===============================
+
+# Python (pyenv)
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+pyenv init - fish | source
+
+# System paths
 set -g -x PATH /usr/local/bin $PATH
 
-# Setup React Native / Android paths
+# React Native / Android paths
 set -g -x ANDROID_HOME $HOME/Library/Android/sdk
-set -g -x PATH $ANDROID_HOME/emulator $PATH
-set -g -x PATH $ANDROID_HOME/tools $PATH
-set -g -x PATH $ANDROID_HOME/tools/bin $PATH
-set -g -x PATH $ANDROID_HOME/platform-tools $PATH
-set -g -x JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+set -g -x PATH $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $PATH
+set -g -x JAVA_HOME /opt/homebrew/opt/openjdk
 
 # Fastlane
 set -g -x PATH $HOME/.fastlane/bin $PATH
 
-# Postgres
-set -gx NO_VENDORED_POSTGRES true
+# Deno
+set -g -x DENO_INSTALL $HOME/.deno
+set -g -x PATH $DENO_INSTALL/bin $PATH
+
+# PNPM
+set -g -x PNPM_HOME "$HOME/Library/pnpm"
+set -g -x PATH $PNPM_HOME $PATH
 
 # Volta
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
+set -g -x VOLTA_HOME "$HOME/.volta"
+set -g -x PATH $VOLTA_HOME/bin $PATH
 
 # Ruby
 set fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
-# Fish config
+# Bun
+set -g -x BUN_INSTALL "$HOME/.bun"
+set -g -x PATH $BUN_INSTALL/bin $PATH
+
+# WorkOS
+set -gx NODE_EXTRA_CA_CERTS /usr/local/share/ca-certificates/workos/workos-local-ca.crt
+
+# ===============================
+# ENVIRONMENT VARIABLES
+# ===============================
+
+# Postgres
+set -g -x NO_VENDORED_POSTGRES true
+
+# Slack
+set -g -x SLACK_DEVELOPER_MENU true
+
+# Editor
+set -Ux EDITOR vim
+
+# ===============================
+# SHELL CONFIGURATION
+# ===============================
+
+# Disable default fish greeting
 set -g -x fish_greeting ''
 
-# Aliases
+# ===============================
+# ALIASES
+# ===============================
+
 alias g="git"
 
-# Generic
-set -Ux EDITOR vim
-status --is-interactive
+# ===============================
+# FUNCTIONS
+# ===============================
 
-# Twitch alias
+# Twitch streaming alias
 function twitch
-  streamlink "twitch.tv/$argv" best --player /usr/bin/open --player-args "-W -n -a 'Quicktime Player' {filename}" --player-passthrough hls --twitch-disable-ads
+  open -a "QuickTime Player" (streamlink --twitch-disable-ads --http-header "Authorization=OAuth vfvjwyh88a3ax80fhf7r4xe1p5qxdy" --stream-url "twitch.tv/$argv" best)
 end
+
+# YouTube streaming alias
 function youtube
-  streamlink "$argv" best --player /usr/bin/open --player-args "-W -n -a 'Quicktime Player' {filename}" --player-passthrough hls
+  streamlink "$argv" best
 end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
