@@ -1,0 +1,48 @@
+#push-web-notification {
+  display: none !important;
+}
+
+/*
+ * globo.com
+ */
+.ad-container,
+#banner_home1_container,
+#banner_home2_container,
+#banner_home3_container,
+.destaque-trilho,
+#coluna-entretenimento,
+#franja-video,
+.area-franjas,
+.area-vitrine-globoplay,
+.franja-carrossel,
+.footer_links {
+  display: none !important;
+}
+
+.header-grid .header-grid__logo,
+.header-grid .main-menu,
+.header-grid .auxiliary-menu {
+  display: none !important;
+}
+
+#column-list {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+#coluna-jornalismo,
+#coluna-esporte {
+  width: auto !important;
+}
+body[style='overflow: hidden;'] {
+  overflow: auto !important;
+}
+
+.fc-ab-root {
+  display: none !important;
+}
+
+.mobiliarioAdblock {
+  display: none !important;
+}

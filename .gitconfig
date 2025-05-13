@@ -33,6 +33,18 @@
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	# Remove branches that have already been merged with master
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  #
+  prune-branches = "!git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
+  movebranch = "!f() { \
+    : git checkout ; \
+    git rebase --onto $2 $(git merge-base $1 @); \
+}; f"
+  # Aviator
+  sync = "!av stack sync"
+  tree = "!av stack tree"
+  down = "!av stack prev"
+  up = "!av stack next"
+  pr = "!av pr"
 
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -90,11 +102,13 @@
 
 [push]
 	default = current
+	autoSetupRemote = true
 
 # Profile
 [user]
 	name = Lucas Motta
 	email = mail@lucasmotta.com
+	signingkey = /Users/lucasmotta/.ssh/id_ed25519.pub
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -102,3 +116,7 @@
 	required = true
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh

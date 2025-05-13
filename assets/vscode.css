@@ -1,16 +1,32 @@
-.monaco-tree, .part.sidebar {
-    font-family: "Pragmata Pro", Iosevka, "Operator Mono";
-    font-size: 12px;
+.monaco-tree,
+.part.sidebar {
+  font-family: 'Zed Mono', Iosevka, 'Operator Mono';
+  font-size: 13px;
 }
 
 .mac {
-    font-family: "Pragmata Pro", Iosevka, "Operator Mono" !important;
+  font-family: 'Zed Mono', Iosevka, 'Operator Mono' !important;
 }
 
-.monaco-workbench .part>.content {
-    font-size: 12px;
+.monaco-workbench .part > .content {
+  font-size: 13px;
 }
 
-.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab .tab-label a, .monaco-workbench .part.editor>.content .editor-group-container>.title .title-label a {
-    font-size: 12px;
+.monaco-workbench
+  .part.editor
+  > .content
+  .editor-group-container
+  > .title
+  .tabs-container
+  > .tab
+  .tab-label
+  a,
+.monaco-workbench
+  .part.editor
+  > .content
+  .editor-group-container
+  > .title
+  .title-label
+  a {
+  font-size: 13px;
 }
