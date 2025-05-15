@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ############################################
-title "Fish Shell"
+echo "Fish Shell"
 ############################################
 
 # add fish to the list of acceptable shells (if not already present)
@@ -14,7 +14,7 @@ fi
 chsh -s /usr/local/bin/fish
 
 # install fisherman
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 # install fisherman plugins
 fisher install pure-fish/pure

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ############################################
-title "Homebrew"
+echo "Homebrew"
 ############################################
 
 
@@ -22,35 +22,21 @@ brew install fish
 brew install gh
 brew install git
 brew install mas
-brew install ruby
+brew install pyenv
 brew install streamlink
-brew install tree
-brew install watchman
+brew install withgraphite/tap/graphite
 
 # install apps
 brew install --cask 1password
-brew install --cask android-studio
-brew install --cask appcleaner
-brew install --cask brave-browser
-brew install --cask finicky
-brew install --cask firefox
-brew install --cask flipper
+brew install --cask arc
 brew install --cask google-chrome
 brew install --cask imageoptim
 brew install --cask iterm2
-brew install --cask kap
-brew install --cask maccy
-brew install --cask opera
-brew install --cask phoenix
-brew install --cask reactotron
-brew install --cask sketch
+brew install --cask raycast
 brew install --cask slack
 brew install --cask spotify
-brew install --cask transmission
 brew install --cask visual-studio-code
-brew install --cask vlc
-brew install --cask whatsapp
-brew install --cask zeplin
+brew install --cask zed@preview
 brew install --cask zoom
 
 # install appstore apps
@@ -58,8 +44,11 @@ mas install 937984704       # Amphetamine
 mas install 1287239339      # ColorSlurp
 
 # install fonts
-brew tap homebrew/cask-fonts
-brew cask install font-iosevka
+brew install --cask font-iosevka
+brew install --cask font-ibm-plex-mono
+brew install --cask font-inter
+brew install --cask font-geist
+brew install --cask font-geist-mono
 
 # remove outdated versions from the cellar
 brew cleanup

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ############################################
-title "Xcode CLI Tools"
+echo "Xcode CLI Tools"
 ############################################
 
 xcode-select --install

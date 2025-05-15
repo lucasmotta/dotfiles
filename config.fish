@@ -2,13 +2,14 @@
 # PATH MANAGEMENT
 # ===============================
 
+# System paths
+set -g -x PATH /usr/local/bin $PATH
+set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+
 # Python (pyenv)
 set -Ux PYENV_ROOT $HOME/.pyenv
 set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - fish | source
-
-# System paths
-set -g -x PATH /usr/local/bin $PATH
 
 # React Native / Android paths
 set -g -x ANDROID_HOME $HOME/Library/Android/sdk
@@ -29,6 +30,7 @@ set -g -x PATH $PNPM_HOME $PATH
 # Volta
 set -g -x VOLTA_HOME "$HOME/.volta"
 set -g -x PATH $VOLTA_HOME/bin $PATH
+set -g -x VOLTA_FEATURE_NODE_INSTALL true
 
 # Ruby
 set fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
