@@ -6,13 +6,9 @@
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx VOLTA_FEATURE_NODE_INSTALL true
 
-# Python (pyenv)
-set -gx PYENV_ROOT $HOME/.pyenv
-
 # User paths
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/opt/ruby/bin
-fish_add_path $PYENV_ROOT/bin
 
 # System path
 fish_add_path /usr/local/bin
@@ -42,9 +38,6 @@ fish_add_path $BUN_INSTALL/bin
 
 # Volta (must come last to win over pnpm/bun node shims)
 fish_add_path --move --prepend $VOLTA_HOME/bin
-
-# pyenv init (after pyenv is on PATH)
-pyenv init - fish | source
 
 # WorkOS
 set -gx NODE_EXTRA_CA_CERTS /usr/local/share/ca-certificates/workos/workos-local-ca.crt
