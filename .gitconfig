@@ -64,6 +64,7 @@
 	trustctime = false
 	# Ignore Case
 	ignorecase = false
+	editor = open -W -a 'CommitEdit'
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
