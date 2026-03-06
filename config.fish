@@ -2,14 +2,24 @@
 # PATH MANAGEMENT
 # ===============================
 
-# System paths
-set -g -x PATH /usr/local/bin $PATH
-set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+set -eU fish_user_paths
+
+# Volta
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx VOLTA_FEATURE_NODE_INSTALL true
 
 # Python (pyenv)
 set -Ux PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-pyenv init - fish | source
+
+# User paths (Volta first, then pyenv, Ruby, Homebrew)
+set -U fish_user_paths \
+    $VOLTA_HOME/bin \
+    $PYENV_ROOT/bin \
+    /usr/local/opt/ruby/bin \
+    /opt/homebrew/bin
+
+# System paths
+set -g -x PATH /usr/local/bin $PATH
 
 # React Native / Android paths
 set -g -x ANDROID_HOME $HOME/Library/Android/sdk
@@ -27,20 +37,19 @@ set -g -x PATH $DENO_INSTALL/bin $PATH
 set -g -x PNPM_HOME "$HOME/Library/pnpm"
 set -g -x PATH $PNPM_HOME $PATH
 
-# Volta
-set -g -x VOLTA_HOME "$HOME/.volta"
-set -g -x PATH $VOLTA_HOME/bin $PATH
-set -g -x VOLTA_FEATURE_NODE_INSTALL true
-
-# Ruby
-set fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
-
 # Bun
 set -g -x BUN_INSTALL "$HOME/.bun"
 set -g -x PATH $BUN_INSTALL/bin $PATH
 
+# Volta (must come last to win over pnpm/bun node shims)
+set -g -x PATH $VOLTA_HOME/bin $PATH
+
+# pyenv init (after pyenv is on PATH)
+pyenv init - fish | source
+
 # WorkOS
 set -gx NODE_EXTRA_CA_CERTS /usr/local/share/ca-certificates/workos/workos-local-ca.crt
+
 
 # ===============================
 # ENVIRONMENT VARIABLES
@@ -53,7 +62,10 @@ set -g -x NO_VENDORED_POSTGRES true
 set -g -x SLACK_DEVELOPER_MENU true
 
 # Editor
-set -Ux EDITOR vim
+set -Ux EDITOR "zed --wait"
+
+# Node.js
+set -g -x NODE_OPTIONS "--max-old-space-size=4096"
 
 # ===============================
 # SHELL CONFIGURATION
@@ -67,6 +79,7 @@ set -g -x fish_greeting ''
 # ===============================
 
 alias g="git"
+alias jsonpretty="prettyjson"
 
 # ===============================
 # FUNCTIONS
@@ -85,3 +98,20 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# Add rush nuke command
+function rush
+    if test (count $argv) -ge 1; and test $argv[1] = 'nuke'
+        rush clean
+        rush purge
+        rush update
+        rush rebuild
+    else
+        command rush $argv
+    end
+end
+
+alias claude="/Users/lucasmotta/.claude/local/claude"
+
+# Added by Antigravity
+fish_add_path /Users/lucasmotta/.antigravity/antigravity/bin
