@@ -1,29 +1,37 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ############################################
 # Dependencies
 ############################################
-source "$(pwd)/scripts/xcode.sh"
-source "$(pwd)/scripts/brew.sh"
-source "$(pwd)/scripts/fish.sh"
+bash "$SCRIPT_DIR/scripts/xcode.sh"
+bash "$SCRIPT_DIR/scripts/brew.sh"
+bash "$SCRIPT_DIR/scripts/fish.sh"
 
 ############################################
 # Symlink
 ############################################
 mkdir -p ~/.config/fish
 
-ln -fs "$(pwd)/.editorconfig" ~/.editorconfig
-ln -fs "$(pwd)/.gitconfig" ~/.gitconfig
-ln -fs "$(pwd)/.gitignore" ~/.gitignore
-ln -fs "$(pwd)/.hushlogin" ~/.hushlogin
-ln -fs "$(pwd)/.vimrc" ~/.vimrc
-ln -fs "$(pwd)/config.fish" ~/.config/fish/config.fish
+ln -fs "$SCRIPT_DIR/.editorconfig" ~/.editorconfig
+ln -fs "$SCRIPT_DIR/.gitconfig" ~/.gitconfig
+ln -fs "$SCRIPT_DIR/.gitignore" ~/.gitignore
+ln -fs "$SCRIPT_DIR/.hushlogin" ~/.hushlogin
+ln -fs "$SCRIPT_DIR/.vimrc" ~/.vimrc
+ln -fs "$SCRIPT_DIR/config.fish" ~/.config/fish/config.fish
 
 ############################################
 # Other packages
 ############################################
 
 # Volta
-curl https://get.volta.sh | bash
-volta install node
+curl -fsSL https://get.volta.sh | bash
+
+if command -v volta >/dev/null 2>&1; then
+  volta install node
+elif [ -x "$HOME/.volta/bin/volta" ]; then
+  "$HOME/.volta/bin/volta" install node
+fi

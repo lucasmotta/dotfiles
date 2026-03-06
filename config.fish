@@ -2,47 +2,46 @@
 # PATH MANAGEMENT
 # ===============================
 
-set -eU fish_user_paths
-
 # Volta
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx VOLTA_FEATURE_NODE_INSTALL true
 
 # Python (pyenv)
-set -Ux PYENV_ROOT $HOME/.pyenv
+set -gx PYENV_ROOT $HOME/.pyenv
 
-# User paths (Volta first, then pyenv, Ruby, Homebrew)
-set -U fish_user_paths \
-    $VOLTA_HOME/bin \
-    $PYENV_ROOT/bin \
-    /usr/local/opt/ruby/bin \
-    /opt/homebrew/bin
+# User paths
+fish_add_path /opt/homebrew/bin
+fish_add_path /usr/local/opt/ruby/bin
+fish_add_path $PYENV_ROOT/bin
 
-# System paths
-set -g -x PATH /usr/local/bin $PATH
+# System path
+fish_add_path /usr/local/bin
 
 # React Native / Android paths
 set -g -x ANDROID_HOME $HOME/Library/Android/sdk
-set -g -x PATH $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $PATH
+fish_add_path $ANDROID_HOME/emulator
+fish_add_path $ANDROID_HOME/tools
+fish_add_path $ANDROID_HOME/tools/bin
+fish_add_path $ANDROID_HOME/platform-tools
 set -g -x JAVA_HOME /opt/homebrew/opt/openjdk
 
 # Fastlane
-set -g -x PATH $HOME/.fastlane/bin $PATH
+fish_add_path $HOME/.fastlane/bin
 
 # Deno
 set -g -x DENO_INSTALL $HOME/.deno
-set -g -x PATH $DENO_INSTALL/bin $PATH
+fish_add_path $DENO_INSTALL/bin
 
 # PNPM
 set -g -x PNPM_HOME "$HOME/Library/pnpm"
-set -g -x PATH $PNPM_HOME $PATH
+fish_add_path $PNPM_HOME
 
 # Bun
 set -g -x BUN_INSTALL "$HOME/.bun"
-set -g -x PATH $BUN_INSTALL/bin $PATH
+fish_add_path $BUN_INSTALL/bin
 
 # Volta (must come last to win over pnpm/bun node shims)
-set -g -x PATH $VOLTA_HOME/bin $PATH
+fish_add_path --move --prepend $VOLTA_HOME/bin
 
 # pyenv init (after pyenv is on PATH)
 pyenv init - fish | source
@@ -62,7 +61,7 @@ set -g -x NO_VENDORED_POSTGRES true
 set -g -x SLACK_DEVELOPER_MENU true
 
 # Editor
-set -Ux EDITOR "zed --wait"
+set -gx EDITOR "zed --wait"
 
 # Node.js
 set -g -x NODE_OPTIONS "--max-old-space-size=4096"
@@ -87,7 +86,20 @@ alias jsonpretty="prettyjson"
 
 # Twitch streaming alias
 function twitch
-  open -a "QuickTime Player" (streamlink --twitch-disable-ads --http-header "Authorization=OAuth vfvjwyh88a3ax80fhf7r4xe1p5qxdy" --stream-url "twitch.tv/$argv" best)
+  if test (count $argv) -lt 1
+    echo "Usage: twitch <channel>" >&2
+    return 1
+  end
+
+  set -l channel $argv[1]
+  set -l streamlink_args --twitch-disable-ads --stream-url "twitch.tv/$channel" best
+
+  if set -q TWITCH_OAUTH_TOKEN; and test -n "$TWITCH_OAUTH_TOKEN"
+    set streamlink_args --twitch-disable-ads --http-header "Authorization=OAuth $TWITCH_OAUTH_TOKEN" --stream-url "twitch.tv/$channel" best
+  end
+
+  set -l stream_url (streamlink $streamlink_args)
+  open -a "QuickTime Player" $stream_url
 end
 
 # YouTube streaming alias

@@ -16,9 +16,8 @@ set gdefault
 set encoding=utf-8 nobomb
 " Change mapleader
 let mapleader=","
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
+" Keep default newline-at-EOF behavior
+set nobinary
 
 " Respect modeline in files
 set modeline
