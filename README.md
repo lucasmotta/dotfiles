@@ -26,21 +26,12 @@ cd dotfiles
 - Configure it using secret gist config
 - Run `Sync: Download Settings`
 
-### App Store
-
-- [Amphetamine](https://itunes.apple.com/app/amphetamine/id937984704?mt=12)
-- [ColorSlurp](https://apps.apple.com/us/app/colorslurp/id1287239339?mt=12)
-
 ### Twitch token (optional)
 
 - Set `TWITCH_OAUTH_TOKEN` in your shell environment to use Twitch auth headers in `twitch` helpers.
 - If unset, scripts still work but run without auth headers.
 
 ## Credits
-
-### MacOS
-
-It's almost the same config as [mathiasbynes/dotfiles](https://github.com/mathiasbynens/dotfiles), but with my twist. All credits goes to him.
 
 ### Dotfiles
 

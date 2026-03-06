@@ -41,7 +41,26 @@ fi
 curl -fsSL https://get.volta.sh | bash
 
 if command -v volta >/dev/null 2>&1; then
-  volta install node
+  volta install node@lts pnpm@latest
 elif [ -x "$HOME/.volta/bin/volta" ]; then
-  "$HOME/.volta/bin/volta" install node
+  "$HOME/.volta/bin/volta" install node@lts pnpm@latest
+fi
+
+# Claude Code
+if ! command -v claude >/dev/null 2>&1 && ! command -v claude-code >/dev/null 2>&1; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# Codex CLI
+if ! command -v codex >/dev/null 2>&1; then
+  if command -v npm >/dev/null 2>&1; then
+    npm i -g @openai/codex
+  elif [ -x "$HOME/.volta/bin/npm" ]; then
+    "$HOME/.volta/bin/npm" i -g @openai/codex
+  fi
+fi
+
+# Bun
+if ! command -v bun >/dev/null 2>&1 && [ ! -x "$HOME/.bun/bin/bun" ]; then
+  curl -fsSL https://bun.com/install | bash
 fi

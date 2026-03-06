@@ -37,12 +37,5 @@ if ! mas install 1287239339; then
   echo "Skipping ColorSlurp: mas install failed (likely not signed in to the App Store)"
 fi
 
-# install fonts
-brew install --cask font-iosevka
-brew install --cask font-ibm-plex-mono
-brew install --cask font-inter
-brew install --cask font-geist
-brew install --cask font-geist-mono
-
 # remove outdated versions from the cellar
 brew cleanup

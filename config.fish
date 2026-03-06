@@ -28,10 +28,6 @@ fish_add_path $HOME/.fastlane/bin
 set -g -x DENO_INSTALL $HOME/.deno
 fish_add_path $DENO_INSTALL/bin
 
-# PNPM
-set -g -x PNPM_HOME "$HOME/Library/pnpm"
-fish_add_path $PNPM_HOME
-
 # Bun
 set -g -x BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL/bin
