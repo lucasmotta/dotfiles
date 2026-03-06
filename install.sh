@@ -23,6 +23,13 @@ ln -fs "$SCRIPT_DIR/.hushlogin" ~/.hushlogin
 ln -fs "$SCRIPT_DIR/.vimrc" ~/.vimrc
 ln -fs "$SCRIPT_DIR/config.fish" ~/.config/fish/config.fish
 
+if command -v pre-commit >/dev/null 2>&1; then
+  (
+    cd "$SCRIPT_DIR"
+    pre-commit install --install-hooks
+  )
+fi
+
 ############################################
 # Other packages
 ############################################

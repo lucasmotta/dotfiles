@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+        files: ^(install\.sh|scripts/.*\.sh|raycast/.*\.sh)$
+
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.12.0-2
+    hooks:
+      - id: shfmt
+        args: [--write, --indent, "2", --case-indent]
+        files: ^(install\.sh|scripts/.*\.sh|raycast/.*\.sh)$
+
+  - repo: local
+    hooks:
+      - id: fish-syntax-check
+        name: fish syntax check
+        entry: fish --no-execute config.fish
+        language: system
+        pass_filenames: false
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0
+    hooks:
+      - id: gitleaks

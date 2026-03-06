@@ -6,6 +6,18 @@ cd dotfiles
 ./install.sh
 ```
 
+## Tooling
+
+- Formulae and casks are managed in [`Brewfile`](./Brewfile) via `brew bundle`.
+- Run all checks with:
+  ```bash
+  ./scripts/check.sh
+  ```
+- Install git hooks with:
+  ```bash
+  pre-commit install --install-hooks
+  ```
+
 ## Manual config
 
 ### VSCode
