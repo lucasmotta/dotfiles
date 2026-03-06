@@ -48,11 +48,11 @@ brew install --cask zed@preview
 brew install --cask zoom
 
 # install appstore apps
-if mas account >/dev/null 2>&1; then
-  mas install 937984704       # Amphetamine
-  mas install 1287239339      # ColorSlurp
-else
-  echo "Skipping App Store installs: not signed in to the App Store"
+if ! mas install 937984704; then
+  echo "Skipping Amphetamine: mas install failed (likely not signed in to the App Store)"
+fi
+if ! mas install 1287239339; then
+  echo "Skipping ColorSlurp: mas install failed (likely not signed in to the App Store)"
 fi
 
 # install fonts

@@ -111,18 +111,6 @@ end
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-# Add rush nuke command
-function rush
-    if test (count $argv) -ge 1; and test $argv[1] = 'nuke'
-        rush clean
-        rush purge
-        rush update
-        rush rebuild
-    else
-        command rush $argv
-    end
-end
-
 alias claude="/Users/lucasmotta/.claude/local/claude"
 
 # Added by Antigravity
