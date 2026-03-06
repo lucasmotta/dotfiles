@@ -1,0 +1,41 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "super-ctrl-left": "workspace::ToggleLeftDock",
+      "super-ctrl-right": "workspace::ToggleRightDock",
+      "super-ctrl-down": "workspace::ToggleBottomDock",
+      "super-ctrl-up": "workspace::ToggleLeftDock",
+      "super-shift-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "super-alt-down": "editor::SelectNext",
+      "super-alt-up": "editor::SelectPrevious",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-tab": "pane::ActivateNextItem",
+      "super-shift-d": "editor::DuplicateLineDown",
+      "super-d": "editor::DeleteLine",
+      "alt-shift-up": "editor::AddSelectionAbove",
+      "alt-shift-down": "editor::AddSelectionBelow",
+      "alt-ctrl-up": "editor::AddSelectionAbove",
+      "alt-ctrl-down": "editor::AddSelectionBelow",
+      "alt-ctrl-right": "editor::SelectLargerSyntaxNode", // Expand Selection
+      "alt-ctrl-left": "editor::SelectSmallerSyntaxNode" // Shrink Selection,
+    }
+  }
+]

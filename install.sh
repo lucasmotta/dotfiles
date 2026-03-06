@@ -15,6 +15,7 @@ bash "$SCRIPT_DIR/scripts/fish.sh"
 # Symlink
 ############################################
 mkdir -p ~/.config/fish
+mkdir -p ~/.config/zed
 
 ln -fs "$SCRIPT_DIR/.editorconfig" ~/.editorconfig
 ln -fs "$SCRIPT_DIR/.gitconfig" ~/.gitconfig
@@ -22,6 +23,8 @@ ln -fs "$SCRIPT_DIR/.gitignore" ~/.gitignore
 ln -fs "$SCRIPT_DIR/.hushlogin" ~/.hushlogin
 ln -fs "$SCRIPT_DIR/.vimrc" ~/.vimrc
 ln -fs "$SCRIPT_DIR/config.fish" ~/.config/fish/config.fish
+ln -fs "$SCRIPT_DIR/zed/keymap.json" ~/.config/zed/keymap.json
+ln -fs "$SCRIPT_DIR/zed/settings.json" ~/.config/zed/settings.json
 
 if command -v pre-commit >/dev/null 2>&1; then
   (

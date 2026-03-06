@@ -1,0 +1,143 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    }
+  },
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "default_profile": "write",
+    "model_parameters": [],
+    "dock": "left",
+  },
+  "ui_font_family": "Paper Mono",
+  "ui_font_size": 13,
+  "ui_font_weight": 400,
+  "buffer_font_family": "Ioskeley Mono",
+  "buffer_font_size": 13.0,
+  "buffer_font_weight": 400,
+  "buffer_font_features": {
+    "liga": false,
+  },
+  "cursor_shape": "bar",
+  "tab_size": 2,
+  "terminal": {
+    "shell": {
+      "program": "/opt/homebrew/bin/fish",
+    },
+    "font_size": 12,
+    "cursor_shape": "bar",
+    "line_height": "comfortable",
+  },
+  "buffer_line_height": "comfortable",
+  "theme": {
+    "mode": "system",
+    "light": "Vercel Light",
+    "dark": "Vercel Dark",
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "indent_guides": {
+    "coloring": "fixed",
+    "active_line_width": 2,
+  },
+  "show_edit_predictions": true,
+  "show_completion_documentation": true,
+  "show_completions_on_input": false,
+  "scrollbar": {
+    "show": "always",
+  },
+  "centered_layout": {
+    "left_padding": 0.15,
+    "right_padding": 0.15,
+  },
+  "project_panel": {
+    "button": true,
+    "dock": "right",
+    "git_status": true,
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  // Move some unnecessary panels to the left
+  "notification_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "file_types": {
+    "JSON": ["*.json"],
+    // "JSONC": ["*.jsonc"],
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    // "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules",
+  ],
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": { "font_style": "normal" },
+      "type": { "font_style": "normal" },
+      "title": { "font_style": "normal" },
+      "keyword": { "font_style": "normal" },
+      "function": { "font_style": "normal" },
+    },
+    "players": [
+      {
+        "cursor": "#007AFF",
+        // "selection": "#DADADA99"
+      },
+    ],
+  },
+  // "languages": {
+  //   "TypeScript": {
+  //     "language_servers": ["tsgo", "vtsls"],
+  //   },
+  //   "TSX": {
+  //     "language_servers": ["tsgo", "vtsls"],
+  //   },
+  // },
+}
