@@ -12,17 +12,17 @@
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
-    }
+      "enable_lsp_tasks": true,
+    },
   },
   "agent": {
     "play_sound_when_agent_done": true,
@@ -50,11 +50,11 @@
     "line_height": "comfortable",
   },
   "buffer_line_height": "comfortable",
-  "theme": {
-    "mode": "system",
-    "light": "Vercel Light",
-    "dark": "Vercel Dark",
-  },
+  // "theme": {
+  //   "mode": "system",
+  //   "light": "Vercel Light",
+  //   "dark": "Vercel Dark",
+  // },
   "edit_predictions": {
     "mode": "subtle",
   },
