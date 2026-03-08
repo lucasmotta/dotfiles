@@ -36,9 +36,6 @@ fish_add_path $BUN_INSTALL/bin
 # Volta (must come last to win over pnpm/bun node shims)
 fish_add_path --move --prepend $VOLTA_HOME/bin
 
-# WorkOS
-set -gx NODE_EXTRA_CA_CERTS /usr/local/share/ca-certificates/workos/workos-local-ca.crt
-
 
 # ===============================
 # ENVIRONMENT VARIABLES
@@ -100,8 +97,6 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
-
-alias claude="/Users/lucasmotta/.claude/local/claude"
 
 # Added by Antigravity
 fish_add_path /Users/lucasmotta/.antigravity/antigravity/bin
