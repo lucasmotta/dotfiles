@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BREWFILE="$SCRIPT_DIR/../Brewfile"
+BREW_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BREWFILE="$BREW_SCRIPT_DIR/../Brewfile"
 
 ############################################
 echo "Homebrew"
@@ -23,11 +23,8 @@ fi
 # make sure we’re using the latest homebrew
 brew update
 
-# upgrade any already-installed formulae
-brew upgrade
-
 # install formulae and casks from Brewfile
-brew bundle --file "$BREWFILE" --no-lock
+brew bundle --file "$BREWFILE"
 
 # install appstore apps
 if ! mas install 937984704; then

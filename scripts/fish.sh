@@ -22,11 +22,13 @@ if [ "${SHELL:-}" != "$FISH_BIN" ]; then
   chsh -s "$FISH_BIN"
 fi
 
-# install fisherman
+# install fisherman and plugins
 fish -c '
 if not functions -q fisher
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
   fisher install jorgebucaran/fisher
 end
-fisher install pure-fish/pure
+if not fisher list | grep -q pure-fish/pure
+  fisher install pure-fish/pure
+end
 '

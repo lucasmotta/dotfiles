@@ -7,6 +7,7 @@ set -gx VOLTA_HOME "$HOME/.volta"
 set -gx VOLTA_FEATURE_NODE_INSTALL true
 
 # User paths
+fish_add_path ~/.local/bin
 fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/opt/ruby/bin
 

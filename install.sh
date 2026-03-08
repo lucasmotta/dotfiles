@@ -8,7 +8,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Dependencies
 ############################################
 bash "$SCRIPT_DIR/scripts/xcode.sh"
-bash "$SCRIPT_DIR/scripts/brew.sh"
+source "$SCRIPT_DIR/scripts/brew.sh"
+
 bash "$SCRIPT_DIR/scripts/fish.sh"
 
 ############################################
