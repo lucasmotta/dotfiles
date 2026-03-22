@@ -33,6 +33,12 @@ fi
 if ! mas install 1287239339; then
   echo "Skipping ColorSlurp: mas install failed (likely not signed in to the App Store)"
 fi
+if ! mas install 310633997; then
+  echo "Skipping WhatsApp: mas install failed (likely not signed in to the App Store)"
+fi
+if ! mas install 497799835; then
+  echo "Skipping Xcode: mas install failed (likely not signed in to the App Store)"
+fi
 
 # remove outdated versions from the cellar
 brew cleanup
