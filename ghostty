@@ -1,0 +1,22 @@
+theme = Vercel
+font-family = "Paper Mono"
+font-size = 12
+background-opacity = 0.94
+background-blur = 8
+
+# macos-titlebar-style = transparent
+macos-window-buttons = hidden
+# macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+macos-icon = xray
+faint-opacity = 0.5
+window-padding-x = 12
+window-padding-y = 6
+adjust-cursor-thickness = 3
+cursor-color = #89F336
+scrollback-limit = 100000000
+window-colorspace = display-p3
+macos-hidden = always
+quick-terminal-autohide = false
+quick-terminal-animation-duration = 0.1
+keybind = global:cmd+backquote=toggle_quick_terminal
