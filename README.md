@@ -20,6 +20,11 @@ cd dotfiles
 
 ## Manual config
 
+### Ghostty
+
+- Config is stored in [`ghostty`](./ghostty).
+- `./install.sh` symlinks it to `~/Library/Application Support/com.mitchellh.ghostty/config`.
+
 ### VSCode
 
 - Install [sync-settings](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)

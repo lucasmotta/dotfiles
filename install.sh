@@ -9,20 +9,25 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ############################################
 bash "$SCRIPT_DIR/scripts/xcode.sh"
 source "$SCRIPT_DIR/scripts/brew.sh"
+bash "$SCRIPT_DIR/scripts/mas.sh"
 
 bash "$SCRIPT_DIR/scripts/fish.sh"
 
 ############################################
 # Symlink
 ############################################
+GHOSTTY_CONFIG_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
+
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/zed
+mkdir -p "$GHOSTTY_CONFIG_DIR"
 
 ln -fs "$SCRIPT_DIR/.editorconfig" ~/.editorconfig
 ln -fs "$SCRIPT_DIR/.gitconfig" ~/.gitconfig
 ln -fs "$SCRIPT_DIR/.gitignore" ~/.gitignore
 ln -fs "$SCRIPT_DIR/.hushlogin" ~/.hushlogin
 ln -fs "$SCRIPT_DIR/.vimrc" ~/.vimrc
+ln -fs "$SCRIPT_DIR/ghostty" "$GHOSTTY_CONFIG_DIR/config"
 ln -fs "$SCRIPT_DIR/config.fish" ~/.config/fish/config.fish
 ln -fs "$SCRIPT_DIR/zed/keymap.json" ~/.config/zed/keymap.json
 ln -fs "$SCRIPT_DIR/zed/settings.json" ~/.config/zed/settings.json
